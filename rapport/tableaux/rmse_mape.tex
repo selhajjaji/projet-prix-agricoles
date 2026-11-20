@@ -1,0 +1,15 @@
+\begin{tabular}{llrrrrrr}
+\toprule
+Série & Modèle & \multicolumn{3}{c}{RMSE (\$/tonne)} & \multicolumn{3}{c}{MAPE (\%)} \\
+\cmidrule(lr){3-5} \cmidrule(lr){6-8}
+& & 1 mois & 3 mois & 6 mois & 1 mois & 3 mois & 6 mois \\
+\midrule
+Maïs-grain -- Ontario & Naïf (référence) & 22,34 & 30,13 & 40,00 & 6,62 & 8,85 & 11,48 \\
+ & ETS / Holt-Winters & 18,97 & 26,89 & 37,90 & 5,49 & 7,61 & 11,38 \\
+ & SARIMA & 18,83 & 26,87 & 37,91 & 5,38 & 7,40 & 11,10 \\
+\midrule
+Canola -- Saskatchewan & Naïf (référence) & 82,93 & 115,09 & 144,56 & 8,26 & 11,03 & 14,70 \\
+ & ETS / Holt-Winters & 77,69 & 108,90 & 140,15 & 7,70 & 10,41 & 14,26 \\
+ & SARIMA & 73,08 & 107,10 & 143,35 & 7,55 & 10,57 & 14,84 \\
+\bottomrule
+\end{tabular}

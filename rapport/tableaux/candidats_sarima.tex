@@ -1,0 +1,21 @@
+\begin{tabular}{llrrrr}
+\toprule
+Série & Candidat & \multicolumn{4}{c}{MAE de validation (\$/tonne)} \\
+\cmidrule(lr){3-6}
+& & 1 mois & 3 mois & 6 mois & Moyenne \\
+\midrule
+Maïs-grain -- Ontario & ARIMA(1,1,0) & 7,82 & 10,50 & 10,70 & 9,67 \\
+ & ARIMA(0,1,1) & 7,69 & 10,15 & 10,06 & 9,30 \\
+ & ARIMA(1,1,1) & 7,82 & 10,51 & 10,71 & 9,68 \\
+ & SARIMA(1,1,0)(1,0,0)12 & 7,56 & 9,75 & 9,94 & 9,08 \\
+ & SARIMA(0,1,1)(0,1,1)12 & 5,64 & 6,77 & 7,24 & 6,55 \\
+ & Naïf (référence) & 7,74 & 9,84 & 9,57 & 9,05 \\
+\midrule
+Canola -- Saskatchewan & ARIMA(1,1,0) & 17,50 & 21,66 & 23,97 & 21,04 \\
+ & ARIMA(0,1,1) & 17,23 & 21,19 & 23,42 & 20,61 \\
+ & ARIMA(1,1,1) & 17,52 & 21,69 & 24,00 & 21,07 \\
+ & SARIMA(1,1,0)(1,0,0)12 & 15,78 & 19,62 & 24,22 & 19,88 \\
+ & SARIMA(0,1,1)(0,1,1)12 & 10,54 & 13,40 & 19,00 & 14,32 \\
+ & Naïf (référence) & 17,12 & 20,93 & 23,20 & 20,42 \\
+\bottomrule
+\end{tabular}

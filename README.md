@@ -82,7 +82,21 @@ streamlit run app.py
 python -m pytest
 ```
 
-Les tests (`tests/`) vérifient le modèle naïf (ordre des bornes, élargissement avec le pas, absence de fuite d'information, entrées invalides), les deux séries, le découpage (périodes contiguës et disjointes, aucune prévision de validation dans un test, chaque prévision dans une seule période, `test_global` = union des trois tests), la conformité des fichiers de `resultats/` au contrat, les métriques par période et le choix du modèle final sur la validation. Ils n'écrivent aucun fichier.
+Les tests (`tests/`) vérifient le modèle naïf (ordre des bornes, élargissement avec le pas, absence de fuite d'information, entrées invalides), les deux séries, le découpage (périodes contiguës et disjointes, aucune prévision de validation dans un test, chaque prévision dans une seule période, `test_global` = union des trois tests), la conformité des fichiers de `resultats/` au contrat, les métriques par période et le choix du modèle final sur la validation, ainsi que la production des figures et tableaux du rapport (exécutée dans un dossier temporaire). Ils n'écrivent aucun fichier dans le dépôt.
+
+## Figures et tableaux du rapport
+
+```bat
+python scripts\generer_figures_rapport.py
+```
+
+Le script lit `data/series.csv` et `resultats/` (sans les modifier) et produit :
+
+- `rapport/figures/` : figures PNG (300 dpi) : `series_prix.png`, `stl_<serie>.png`, `profil_<serie>.png`, `mae_periodes.png`, `couverture.png`, `alertes_<serie>.png` ;
+- `rapport/tableaux/` : contenu des environnements `tabular` (booktabs) : `comparaison.tex`, `detail_<serie>.tex`, `rmse_mape.tex`, `modele_final.tex`, `alertes.tex`, et `candidats_sarima.tex`, `variantes_ets.tex` si les fichiers de validation correspondants existent ;
+- `rapport/resultats_cles.md` : chiffres clés (modèle final, MAE moyennes, nombre d'alertes).
+
+L'option `--sortie DOSSIER` écrit ailleurs que dans `rapport/`. Le script refuse de s'exécuter sur des résultats factices (`resultats/FACTICE.txt`).
 
 ## Ajouter un modèle
 
@@ -172,7 +186,8 @@ scripts/
   preparer_donnees.py           data/mais.csv + data/canola.csv -> data/series.csv (reproduit le notebook)
   executer_evaluation.py        évaluation sur le découpage commun -> resultats/
   generer_resultats_factices.py résultats factices (outil de développement)
-tests/                          test_naif.py, test_evaluation.py (pytest)
+  generer_figures_rapport.py    resultats/ -> rapport/figures, rapport/tableaux, rapport/resultats_cles.md
+tests/                          test_naif.py, test_evaluation.py, test_generer_figures_rapport.py (pytest)
 data/
   mais.csv, canola.csv          fichiers sources extraits de Statistique Canada
   series.csv                    séries au format long (généré)
@@ -180,6 +195,7 @@ resultats/                      previsions.csv, previsions_futures.csv, metrique
 docs/protocole.md               protocole et contrat des fichiers
 notebooks/                      01_pretraitement.ipynb (prétraitement de référence)
 rapport/figures/                figures du rapport
+rapport/tableaux/               tableaux LaTeX du rapport (tabular)
 requirements.txt                dépendances (versions figées)
 pytest.ini                      configuration des tests
 .streamlit/config.toml          configuration de Streamlit (statistiques d'usage désactivées)
