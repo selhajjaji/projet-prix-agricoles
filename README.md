@@ -4,6 +4,9 @@ Outil de suivi et de prévision des prix mensuels du maïs-grain en Ontario et d
 Il compare trois méthodes de prévision (naïf, ETS, SARIMA) et signale les prix observés qui sortent des intervalles de prévision.
 Projet de session du cours INF-5103 (UQO) ; le protocole complet se trouve dans [docs/protocole.md](docs/protocole.md).
 
+**Vidéo de démonstration (3 min) :** https://www.youtube.com/watch?v=Nvmkv8XyUXA
+
+
 ## Séries et découpage
 
 Deux séries, de 1985-01 à 2026-08 (500 mois chacune, aucune valeur manquante) :
